@@ -46,7 +46,12 @@ const Table = ({ columns, data }) => {
             value={search}
             onChange={handleSearch}
           />
-          <Button variant="contained" disabled={!search} onClick={clearSearch}>
+          <Button
+            variant="contained"
+            disabled={!search}
+            onClick={clearSearch}
+            data-testid="clear-search-button"
+          >
             <BackspaceIcon />
           </Button>
         </div>
