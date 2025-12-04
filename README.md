@@ -1,18 +1,63 @@
-# React + Vite
+# Rewards Dashboard App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **React + Vite** web application to display customer reward points, monthly rewards, total rewards, and transaction history.  
+This project demonstrates **React functional components**, **custom hooks**, **React Router**, and **unit testing with Vitest**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **Features**
 
-## React Compiler
+- **User Monthly Rewards:** Displays rewards earned by each customer, grouped month-wise.
+- **Total Rewards:** Displays total reward points per customer.
+- **Transactions:** Shows all transactions with reward points calculation.
+- **404 Page:** Friendly page when route not found.
+- **Custom Hooks:** `useFetchData` for API calls with loading and error handling.
+- **Utility Functions:** `calculateRewardPoints`, `calculateMonthwiseRewards`, `customLogger`.
+- **Unit Testing:** Full coverage for components, hooks, and utilities using **Vitest** and **React Testing Library**.
+- **DateRangeFilter:** A reusable React `DateRangeFilter` component with global state management using DateFilterContext (Context + Reducer), supporting apply/reset actions, validation, and easy integration with tables or dashboards.
+- **Table:** Reusable table component built with MUI DataGrid for easy integration and customization.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+> ⚠️ **Note:** By default, The tables displays data from the last three months up to today, and updates to custom results when a date range is selected.
+---
 
-Note: This will impact Vite dev & build performances.
+## **Tech Stack**
 
-## Expanding the ESLint configuration
+- React 19 + Vite
+- React Router DOM v7
+- JavaScript (ES6+)
+- Vitest + Testing Library (unit tests)
+- CSS Modules / Plain CSS
+- MUI v5 (with optional icons and pickers)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+# Running the App
+
+## start development server
+```
+npm run dev
+```
+## or
+```
+yarn dev
+```
+
+# Running Unit Tests
+
+## run all Vitest tests
+```
+npm run test
+```
+## or
+```
+yarn test
+```
+
+## generate coverage report
+```
+npm run test -- --coverage
+```
+
+# Demo
+
+https://github.com/user-attachments/assets/d28b4a76-1c6d-43d4-9137-333a58a71574
