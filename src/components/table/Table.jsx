@@ -9,16 +9,16 @@ import DateRangeFilter from "../dateRangeFilter/DateRangeFilter";
 import "./table.css";
 
 const Table = ({ columns, data }) => {
-  const [search, setSearch] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const filteredData = useMemo(() => {
-    return search
+    return searchTerm
       ? data.filter((row) => {
           const name = row?.customerName ?? row?.name ?? "";
-          return name && name.toLowerCase().includes(search.toLowerCase());
+          return name && name.toLowerCase().includes(searchTerm.toLowerCase());
         })
       : data;
-  }, [search, data]);
+  }, [searchTerm, data]);
 
   const rowsWithId = useMemo(() => {
     return filteredData.map((row) => ({
@@ -28,11 +28,11 @@ const Table = ({ columns, data }) => {
   }, [filteredData]);
 
   const handleSearch = useCallback((e) => {
-    setSearch(e.target.value);
+    setSearchTerm(e.target.value);
   }, []);
 
   const clearSearch = useCallback(() => {
-    setSearch("");
+    setSearchTerm("");
   }, []);
 
   return (
@@ -43,12 +43,12 @@ const Table = ({ columns, data }) => {
             label="Filter by Customer Name"
             variant="outlined"
             className="custom-textfield"
-            value={search}
+            value={searchTerm}
             onChange={handleSearch}
           />
           <Button
             variant="contained"
-            disabled={!search}
+            disabled={!searchTerm}
             onClick={clearSearch}
             data-testid="clear-search-button"
           >

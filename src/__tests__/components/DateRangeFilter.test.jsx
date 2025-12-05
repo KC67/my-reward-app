@@ -6,7 +6,7 @@ import DateRangeFilter from "../../components/dateRangeFilter/DateRangeFilter";
 const mockDispatch = vi.fn();
 
 const mockContextValue = {
-  state: { fromDate: null, toDate: null },
+  dateRangeFilterState: { fromDate: null, toDate: null },
   dispatch: mockDispatch,
 };
 

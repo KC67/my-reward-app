@@ -54,7 +54,6 @@ describe("Table Component", () => {
 
     fireEvent.click(clearBtn);
     expect(input.value).toBe("");
-    // All rows visible again
     const rows = screen.getAllByRole("row");
     expect(rows.length).toBe(data.length + 1);
   });

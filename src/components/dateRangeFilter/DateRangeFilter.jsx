@@ -8,14 +8,14 @@ import { useDateFilter } from "../../context/DateFilterContext";
 import "./DateRangeFilter.css";
 
 const DateRangeFilter = () => {
-  const { state, dispatch } = useDateFilter();
+  const { dateRangeFilterState, dispatch } = useDateFilter();
   const today = dayjs();
 
   const [localFrom, setLocalFrom] = useState(
-    state.fromDate ? dayjs(state.fromDate) : null
+    dateRangeFilterState.fromDate ? dayjs(dateRangeFilterState.fromDate) : null
   );
   const [localTo, setLocalTo] = useState(
-    state.toDate ? dayjs(state.toDate) : null
+    dateRangeFilterState.toDate ? dayjs(dateRangeFilterState.toDate) : null
   );
 
   const handleApply = () => {

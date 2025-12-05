@@ -8,17 +8,19 @@ const initialState = {
   active: false,
 };
 
-function dateFilterReducer(state, action) {
+Object.freeze(initialState);
+
+function dateFilterReducer(dateRangeFilterState, action) {
   switch (action.type) {
     case "SET_FROM":
-      return { ...state, fromDate: action.payload };
+      return { ...dateRangeFilterState, fromDate: action.payload };
 
     case "SET_TO":
-      return { ...state, toDate: action.payload };
+      return { ...dateRangeFilterState, toDate: action.payload };
 
     case "APPLY":
       return {
-        ...state,
+        ...dateRangeFilterState,
         active: true,
         fromDate: action.payload.from,
         toDate: action.payload.to,
@@ -28,14 +30,17 @@ function dateFilterReducer(state, action) {
       return initialState;
 
     default:
-      return state;
+      return dateRangeFilterState;
   }
 }
 
 export const DateFilterProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(dateFilterReducer, initialState);
+  const [dateRangeFilterState, dispatch] = useReducer(
+    dateFilterReducer,
+    initialState
+  );
   return (
-    <DateFilterContext.Provider value={{ state, dispatch }}>
+    <DateFilterContext.Provider value={{ dateRangeFilterState, dispatch }}>
       {children}
     </DateFilterContext.Provider>
   );

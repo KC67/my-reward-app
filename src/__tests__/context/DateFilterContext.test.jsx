@@ -17,7 +17,7 @@ describe("DateFilterContext reducer + provider tests", () => {
       wrapper: DateFilterProvider,
     });
 
-    expect(result.current.state).toEqual(initialState);
+    expect(result.current.dateRangeFilterState).toEqual(initialState);
   });
 
   test("SET_FROM updates fromDate", () => {
@@ -32,7 +32,7 @@ describe("DateFilterContext reducer + provider tests", () => {
       });
     });
 
-    expect(result.current.state.fromDate).toBe("2025-01-01");
+    expect(result.current.dateRangeFilterState.fromDate).toBe("2025-01-01");
   });
 
   test("SET_TO updates toDate", () => {
@@ -47,7 +47,7 @@ describe("DateFilterContext reducer + provider tests", () => {
       });
     });
 
-    expect(result.current.state.toDate).toBe("2025-02-01");
+    expect(result.current.dateRangeFilterState.toDate).toBe("2025-02-01");
   });
 
   test("APPLY sets active = true and updates both dates", () => {
@@ -65,7 +65,7 @@ describe("DateFilterContext reducer + provider tests", () => {
       });
     });
 
-    expect(result.current.state).toEqual({
+    expect(result.current.dateRangeFilterState).toEqual({
       fromDate: "2025-01-10",
       toDate: "2025-01-20",
       active: true,
@@ -91,7 +91,7 @@ describe("DateFilterContext reducer + provider tests", () => {
       result.current.dispatch({ type: "RESET" });
     });
 
-    expect(result.current.state).toEqual(initialState);
+    expect(result.current.dateRangeFilterState).toEqual(initialState);
   });
 
   test("unknown action returns same state", () => {
@@ -99,12 +99,12 @@ describe("DateFilterContext reducer + provider tests", () => {
       wrapper: DateFilterProvider,
     });
 
-    const before = result.current.state;
+    const before = result.current.dateRangeFilterState;
 
     act(() => {
       result.current.dispatch({ type: "UNKNOWN" });
     });
 
-    expect(result.current.state).toEqual(before);
+    expect(result.current.dateRangeFilterState).toEqual(before);
   });
 });

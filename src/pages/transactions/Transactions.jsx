@@ -16,12 +16,12 @@ const columns = [
 ];
 
 const Transactions = () => {
-  const { state } = useDateFilter();
+  const { dateRangeFilterState } = useDateFilter();
   const [data, setData] = useState([]);
   const { data: rewardsData, loading } = useFetchTransactionDetailsData(
-    state.fromDate,
-    state.toDate,
-    state.active
+    dateRangeFilterState.fromDate,
+    dateRangeFilterState.toDate,
+    dateRangeFilterState.active
   );
 
   useEffect(() => {
