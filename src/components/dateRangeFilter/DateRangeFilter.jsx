@@ -61,6 +61,7 @@ const DateRangeFilter = () => {
         variant="contained"
         onClick={handleApply}
         disabled={!(localFrom && localTo)}
+        data-testid="apply-button"
       >
         Apply
       </Button>
@@ -68,6 +69,7 @@ const DateRangeFilter = () => {
         variant="contained"
         onClick={handleReset}
         disabled={!(localFrom || localTo)}
+        data-testid="reset-button"
       >
         Reset
       </Button>

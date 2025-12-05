@@ -1,9 +1,7 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import Table from "../../components/table/Table";
-import DateRangeFilter from "../../components/dateRangeFilter/DateRangeFilter";
 
-// Mock DateRangeFilter since we only care about Table behavior
 vi.mock("../../components/dateRangeFilter/DateRangeFilter", () => ({
   default: () => <div data-testid="date-range-filter" />,
 }));
@@ -31,7 +29,6 @@ describe("Table Component", () => {
   it("renders correct number of rows initially", () => {
     render(<Table columns={columns} data={data} />);
     const rows = screen.getAllByRole("row");
-    // DataGrid has header row + data rows
     expect(rows.length).toBe(data.length + 1);
   });
 
@@ -39,11 +36,10 @@ describe("Table Component", () => {
     render(<Table columns={columns} data={data} />);
     const input = screen.getByLabelText(/filter by customer name/i);
 
-    // Type "Jane" in search
     fireEvent.change(input, { target: { value: "Jane" } });
 
     const rows = screen.getAllByRole("row");
-    expect(rows.length).toBe(2); // header + 1 matching row
+    expect(rows.length).toBe(2);
     expect(screen.getByText("Jane Smith")).toBeInTheDocument();
     expect(screen.queryByText("John Doe")).not.toBeInTheDocument();
   });
